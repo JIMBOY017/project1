@@ -1,11 +1,11 @@
 <html>
-<body>
+    <body>
 
-<!-- Homepage.php bestaat niet -->
-<form action="Homepage.php" method="get">
-E-mail: <input type="text" name="email"><br>
-<input type="submit" value="Complete request">
-</form>
+        <!-- Homepage.php bestaat niet -->
+        <form action="Homepage.php" method="get">
+            E-mail: <input type="text" name="email"><br>
+            <input type="submit" value="Complete request">
+        </form>
 
-</body>
+    </body>
 </html>
