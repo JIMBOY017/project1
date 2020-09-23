@@ -2,7 +2,7 @@
     <body>
 
         <!-- Homepage.php bestaat niet -->
-        <form action="Homepage.php" method="get">
+        <form action="database.php" method="post">
             Voornaam: <input type="text" name="name" required><br>
             Tussenvoegsel: <input type="text" name="tussenvoegsel"><br>
             Achternaam: <input type="text" name="achternaam" required><br>

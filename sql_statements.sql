@@ -15,3 +15,8 @@ CREATE TABLE persoon(
     account_id int NOT NULL,
     FOREIGN KEY (account_id) REFERENCES account(id)
 );
+
+SELECT * FROM `account` WHERE 1;
+
+INSERT INTO account(email, password)
+VALUES('admin@talnet.nl', 'Test89');

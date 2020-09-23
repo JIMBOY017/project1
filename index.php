@@ -1,5 +1,14 @@
+<?php
+    include_once 'database.php';
+?>
+
+<!DOCTYPE html>
 <html>
     <body>
+        <?php
+        $object = new database;
+        $object->connect();
+        ?>
 
         <!-- Homepage.php bestaat niet -->
         <form action="Homepage.php" method="get">
