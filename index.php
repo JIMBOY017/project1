@@ -1,17 +1,9 @@
-<?php
-    include_once 'database.php';
-?>
-
 <!DOCTYPE html>
 <html>
     <body>
-        <?php
-        $object = new database;
-        $object->connect();
-        ?>
 
         <!-- Homepage.php bestaat niet -->
-        <form action="Homepage.php" method="get">
+        <form action="Homepage.php" method="post">
             Username: <input type="text" name="name" placeholder="Username"><br>
             Password: <input type="password" name="pwd" placeholder="Password"><br>
             <input type="submit" value="Login">

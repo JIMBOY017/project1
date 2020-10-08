@@ -1,6 +1,5 @@
 <?php
 
-//Er is op een of andere manier nog geen database connectie, maar ik probeerde de opdracht zo goed mogelijk te maken.
 include_once 'database.php';
     
 $fieldnames = array("name", "achternaam", "email", "gebruikersnaam", "pwd");
@@ -25,7 +24,6 @@ if (!$error) {
     $wachtwoord = $_POST["pwd"];
     $herhaalpwd = $_POST["herhaalpwd"];
 
-    $object->addAccount($voornaam, $tussenvoegsel, $achternaam, $email, $gebruikersnaam, $wachtwoord);
 }
 
 ?>
@@ -34,7 +32,7 @@ if (!$error) {
     <body>
 
         <!-- Homepage.php bestaat niet -->
-        <form action="database.php" method="post">
+        <form action="database.php" method="get">
             Voornaam: <input type="text" name="name" required><br>
             Tussenvoegsel: <input type="text" name="tussenvoegsel"><br>
             Achternaam: <input type="text" name="achternaam" required><br>

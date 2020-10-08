@@ -1,6 +1,51 @@
 <?php
-
+//De database connectie werkt alleen als ik alles uit de class haal. Nu staat alles in de class en is opeens de verbinding weg.
 class database {
+
+private $servername = "localhost";
+private $username = "root";
+private $password = "";
+private $dbname = "project1";
+
+public $voornaam = $_POST['name'];
+
+function __construct($servername, $username, $password, $dbname, $charset) {
+  $this->servername = $servername;
+  $this->username = $username;
+  $this->password = $password;
+  $this->dbname = $dbname;
+  $this->charset = $charset;  
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql = "INSERT INTO account(gebruikersnaam, email, password) 
+    VALUES ('$gebruikersnaam', '$email', '$wachtwoord');
+
+    INSERT INTO persoon(voornaam, tussenvoegsel, achternaam) 
+    VALUES ('$voornaam', '$tussenvoegsel', '$achternaam');
+    ";
+
+    // Prepare statement
+    $stmt = $conn->prepare($sql);
+
+    // execute the query
+    $stmt->execute();
+
+    // echo a message to say the UPDATE succeeded
+    echo $stmt->rowCount() . " records UPDATED successfully";
+    } catch(PDOException $e) {
+    echo /*$sql .*/ "<br>" . $e->getMessage();
+    }
+    //
+    $conn = null;
+    }
+    
+}
+
+/*class database {
     
     private $servername;
     private $username;
@@ -13,50 +58,11 @@ class database {
         $this->username = $username;
         $this->password = $password;
         $this->dbname = $dbname;
-        $this->charset = $charset;
+        $this->charset = $charset;  
 
-        try {
-            $dsn = "mysql:host=".$this->servername.";dbname=".$this->dbname.";charset=".$this->charset;
-            $pdo = new PDO($dsn, $this->username, $this->password);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $pdo;
-        } catch (PDOException $e) {
-            echo "Connection failed: ".$e->getMessage();
-        }
-        
+        $voornaam = $_POST['name'];
     }
 
-public function addAccount($voornaam, $tussenvoegsel, $achternaam, $email, $gebruikersnaam, $wachtwoord) {
-
-            $voornaam = $_POST['name'];
-            $tussenvoegsel = $_POST['tussenvoegsel'];
-            $achternaam = $_POST['achternaam'];
-            $email = $_POST['email'];
-            $gebruikersnaam = $_POST['gebruikersnaam'];
-            $wachtwoord = $_POST['pwd'];
-            $herhaalpwd = $_POST['herhaalpwd'];
-        
-            $sql = "INSERT INTO persoon (voornaam, tussenvoegsel, achternaam, gebruikersnaam, pwd, herhaalpwd) 
-            VALUES (:voornaam, :tussenvoegsel, :achternaam, :gebruikersnaam, :pwd, :herhaalpwd)";
-        
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute(['voornaam' => $voornaam, 
-            'tussenvoegsel' => $tussenvoegsel, 
-            'achternaam' => $achternaam, 
-            'email' => $email, 
-            'gebruikersnaam' => $gebruikersnaam, 
-            'pwd' => $wachtwoord,
-            'herhaalpwd' => $herhaalpwd]);
-
-}
-
-function insertAccount($email, $password) {
-    $sql = "INSERT INTO account ('email', 'password') VALUES (?, ?, ?)";
-
-    $stmt = $this->db->$pdo->prepare($sql);
-    $stmt->execute([null, $email, $password]);
-}
-
-}
+}*/
 
 ?>
